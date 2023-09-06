@@ -2,17 +2,17 @@
 
 Swift Package Manager fails to resolve a dependency that has a different package name than its url suggests:
 
-.package(url: "https://github.com/simonnickel/snl-core-swiftui", branch: "main"),
+.package(url: "https://github.com/simonnickel/FB13094487-package-product-not-found.git", branch: "main"),
 
-The url is /snl-core-swiftui, while the package name is SNLCoreSwiftUI.
+The url is /FB13094487-package-product-not-found.git, while the package name is FB13094487PackageProductNotFound.
 
 It fails with the following error:
-x-xcode-log://F414219F-DBD0-4A2A-AC10-E043451FEA5A product 'SNLCoreSwiftUI' required by package 'snl-theme' target 'SNLTheme' not found.
+x-xcode-log://F414219F-DBD0-4A2A-AC10-E043451FEA5A product 'FB13094487PackageProductNotFound' required by package 'snl-theme' target 'SNLTheme' not found.
 
 
 
 Using the deprecated dependency definition works: 
-.package(name: "SNLCoreSwiftUI", url: "https://github.com/simonnickel/snl-core-swiftui", branch: "main")
+.package(name: "FB13094487PackageProductNotFound", url: "https://github.com/simonnickel/FB13094487-package-product-not-found.git", branch: "main")
 
 As this is deprecated, it always shows a warning.
 
