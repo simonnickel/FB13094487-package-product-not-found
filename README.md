@@ -30,12 +30,15 @@ let package = Package(
             targets: ["SNLTheme"]),
     ],
 	dependencies: [
+		// Does work, but deprecated:
+		// .package(name: "FB13094487PackageProductNotFound", url: "https://github.com/simonnickel/FB13094487-package-product-not-found.git", branch: "main"),
+		// Does not work:
 		.package(url: "https://github.com/simonnickel/FB13094487-package-product-not-found.git", branch: "main")
 	],
     targets: [
         .target(
             name: "SNLTheme",
-			dependencies: ["FB13094487PackageProductNotFound"]),
+			dependencies: ["FB13094487PackageProductNotFound"]), // <- Causes it to fail.
         .testTarget(
             name: "SNLThemeTests",
             dependencies: ["SNLTheme"]),
