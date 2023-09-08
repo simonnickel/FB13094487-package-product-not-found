@@ -1,4 +1,28 @@
-## FB13094487 - Swift Package Manager fails to resolve dependency with different name than url
+# FB13094487 - Swift Package Manager fails to resolve dependency with different name than url
+
+
+## Solution
+
+Apple Engineering team kindle responded with a solution:
+
+```
+targets: [
+	.target(
+		name: "SNLTheme",
+		dependencies: [
+			// Solution: (instead of ["FB13094487PackageProductNotFound"])
+			.product(name: "FB13094487PackageProductNotFound", package: "FB13094487-package-product-not-found")
+		]), 
+	.testTarget(
+		name: "SNLThemeTests",
+		dependencies: ["SNLTheme"]),
+]
+```
+
+This does work and cleares the warning. However, I still think is a change for the worse compared to the previous API. The Package name should be declared where the package is defined.
+
+
+## Issue
 
 Swift Package Manager fails to resolve a dependency that has a different package name than its url suggests:
 
@@ -22,6 +46,7 @@ Full Package Definition:
 
 import PackageDescription
 
+```
 let package = Package(
     name: "SNLTheme",
     products: [
@@ -44,3 +69,4 @@ let package = Package(
             dependencies: ["SNLTheme"]),
     ]
 )
+```
